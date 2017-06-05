@@ -28,7 +28,7 @@ app.get("/new/*",function (req,res){
           clearInterval(inter);
           myobj = {
                     FullUrl: fullUrl,
-                    ShortUrl: randomKey
+                    ShortUrl: "https://short-url-olbfoto.herokuapp.com/"+randomKey
           };
           collection.insertOne(myobj, function(err, r) {
              if (err) throw err;
@@ -68,7 +68,7 @@ app.get(/[0-9]/,function (req, res){
   
 })
 
-app.listen(8080);
+app.listen(process.env.PORT);
 
 
 function validateUrl (str){
