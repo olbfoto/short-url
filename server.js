@@ -49,13 +49,11 @@ app.get("/new/*",function (req,res){
 });
 app.get(/[0-9]/,function (req, res){
   var str = req.url.toString();
-  str = str.substring(1,str.length);
-  console.log(str);
    //open DB connection
     mongoClient.connect(url,function (err, db){
       if (err) throw err;
       var collection = db.collection("urls");
-      collection.find({ShortUrl: str}).toArray(function(err, result) {
+      collection.find({ShortUrl: "https://short-url-olbfoto.herokuapp.com"+str}).toArray(function(err, result) {
         if (err) throw err;
         str = result[0].FullUrl;
         db.close();
