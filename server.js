@@ -55,7 +55,7 @@ app.get(/[0-9]/,function (req, res){
     mongoClient.connect(url,function (err, db){
       if (err) throw err;
       var collection = db.collection("urls");
-      collection.find({ShortUrl: str*1}).toArray(function(err, result) {
+      collection.find({ShortUrl: str}).toArray(function(err, result) {
         if (err) throw err;
         str = result[0].FullUrl;
         db.close();
